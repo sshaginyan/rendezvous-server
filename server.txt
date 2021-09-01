@@ -1,0 +1,81 @@
+/*
+        Take the buffer and read the first 8 bits or first byte
+        firstByte = buffer.readUInt8(0)
+        
+            >>> always results in non-negative
+            returns an unsigned 32-bit integer
+
+        Shift firstByte to the right by 7 bits
+        firstByte (10000000) >>> 7 (00000111)
+
+        We're only interested in the farthest
+        right bit and therefore we are using a
+        bitwise & with 1 to get the farthest
+        right bit value
+
+        10000000
+        00001111
+            
+    */
+
+    // Not used now, but place holder
+    // switch(opCode) {
+    //     case constants.CONTINUATION_FRAME:
+    //         // Non-control
+    //         console.log('continuation frame');
+    //     break;
+    //     case constants.TEXT_FRAME: // They have `opCode !== 0x01` for this
+    //         // Non-control
+    //         console.log('text frame');
+    //     break;
+    //     case constants.BINARY_FRAME:
+    //         // Non-control
+    //         console.log('binary frame');
+    //     break;
+    //     // reserved for further non-control frames
+    //     case constants.NONCONTROL_FRAME_3:
+    //     case constants.NONCONTROL_FRAME_4:
+    //     case constants.NONCONTROL_FRAME_5:
+    //     case constants.NONCONTROL_FRAME_6:
+    //     case constants.NONCONTROL_FRAME_7:
+    //         console.log('further non-control frames');
+    //     break;
+    //     // denotes a connection close
+    //     case constants.CONNECTION_CLOSE:
+    //         // Control
+    //         console.log('connection close');
+    //         return null;
+    //     break;
+    //     // denotes a ping
+    //     case constants.PING:
+    //         // Control
+    //         console.log('ping');
+    //     break;
+    //     // denotes a pong
+    //     case constants.PONG:
+    //         // Control
+    //         console.log('pong');
+    //     break;
+    //     case constants.CONTROL_FRAME_B:
+    //     case constants.CONTROL_FRAME_C:
+    //     case constants.CONTROL_FRAME_D:
+    //     case constants.CONTROL_FRAME_E:
+    //     case constants.CONTROL_FRAME_F:
+    //         // Reserved for further control frames.
+    //         console.log('further non-control frames');
+    //     break;
+    //     default:
+    //         return null;
+    // }
+
+
+
+    /*
+        We are only interested in the Payload Length and
+        therefore have a 0 for the MASK
+        01111111 (0x7F -> 127)
+    */
+
+
+    // we were already reading data in a BE type of way from left to right. Why
+    // didn't we do the same on line 47?
